@@ -203,3 +203,50 @@
 
   <div *ngIf="karakoksonuc !== undefined">{{ karakoksonuc }}</div>
 </div>
+
+<div>
+  <h3>16--- 1’den N’e kadar olan çift tamsayıların toplamını hesaplayan algoritma</h3>
+  <label for="sayiInput">Bir sayı girin:</label>
+  <input type="number" id="sayiInput" [(ngModel)]="inputSayi" />
+
+  <button (click)="toplamHesapla()">Çift Sayıları Topla</button>
+
+  <div *ngIf="toplamsonuc !== undefined">{{ toplamsonuc }}</div>
+</div>
+<div>
+  <h3>17--- Girilen 5 elemanlı dizinin en büyük elemanını ve bulunduğu indexi bulan algoritma</h3>
+  <label for="sayiInput1">1. Sayı:</label>
+  <input type="number" id="sayiInput1" [(ngModel)]="sayilar[0]" />
+
+  <label for="sayiInput2">2. Sayı:</label>
+  <input type="number" id="sayiInput2" [(ngModel)]="sayilar[1]" />
+
+  <label for="sayiInput3">3. Sayı:</label>
+  <input type="number" id="sayiInput3" [(ngModel)]="sayilar[2]" />
+
+  <label for="sayiInput4">4. Sayı:</label>
+  <input type="number" id="sayiInput4" [(ngModel)]="sayilar[3]" />
+
+  <label for="sayiInput5">5. Sayı:</label>
+  <input type="number" id="sayiInput5" [(ngModel)]="sayilar[4]" />
+
+  <button (click)="enBuyukElemaniBul()">En Büyük Elemanı Bul</button>
+
+  <div *ngIf="enBuyukSayi !== undefined">
+    <p>En Büyük Sayı: {{ enBuyukSayi.sayi }}</p>
+    <p>Bulunduğu İndeks: {{ enBuyukSayi.indeks }}</p>
+  </div>
+</div>
+<div style="text-align: center; margin-top: 50px;">
+  <label for="baslangicInput">Başlangıç Değeri:</label>
+  <input type="number" id="baslangicInput" [(ngModel)]="baslangicDeger" />
+
+  <label for="bitisInput">Bitiş Değeri:</label>
+  <input type="number" id="bitisInput" [(ngModel)]="bitisDeger" />
+
+  <button (click)="tekSayilarToplam()">Tek Sayıları Topla</button>
+
+  <div *ngIf="toplam !== undefined">
+    <p>Bu aralıktaki Tek Sayıların Toplamı: {{ toplam }}</p>
+  </div>
+</div>

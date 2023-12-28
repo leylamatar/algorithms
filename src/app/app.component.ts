@@ -356,4 +356,73 @@ export class AppComponent {
       this.karakoksonuc = 'Geçerli bir sayı girmelisiniz.';
     }
   }
+  //---16---1’den N’e kadar olan çift tamsayıların toplamını hesaplayan algoritma
+  inputSayi: number | undefined;
+  toplamsonuc: number | undefined;
+
+  toplamHesapla() {
+    if (this.inputSayi !== undefined && this.inputSayi >= 0) {
+      this.toplamsonuc = this.toplamBul(this.inputSayi);
+    } else {
+      this.toplamsonuc = undefined;
+    }
+  }
+
+  private toplamBul(sayi: number): number {
+    let toplam = 0;
+
+    for (let i = 2; i <= sayi; i += 2) {
+      toplam += i;
+    }
+
+    return toplam;
+  }
+//----17---.Bir sayı dizisinin en büyük elemanını bulan programın algoritma
+sayilar: number[] = [0, 0, 0, 0, 0];
+  enBuyukSayi: { sayi: number, indeks: number } | undefined;
+
+  enBuyukElemaniBul() {
+    this.enBuyukSayi = this.bulEnBuyukSayi(this.sayilar);
+  }
+
+  private bulEnBuyukSayi(dizi: number[]): { sayi: number, indeks: number } | undefined {
+    if (dizi.length === 0) {
+      return undefined;
+    }
+
+    let enBuyuk = dizi[0];
+    let indeks = 0;
+
+    for (let i = 1; i < dizi.length; i++) {
+      if (dizi[i] > enBuyuk) {
+        enBuyuk = dizi[i];
+        indeks = i+1;
+      }
+    }
+
+    return { sayi: enBuyuk, indeks: indeks };
+  }
+  //--18--Kullanıcının girdiği başlangıç ve bitiş değerleri arasında kalan tek sayıların toplamını bulan algoritma
+  baslangicDeger: number | undefined;
+  bitisDeger: number | undefined;
+  toplam: number | undefined;
+
+  tekSayilarToplam() {
+    if (this.baslangicDeger !== undefined && this.bitisDeger !== undefined) {
+      this.toplam = this.hesaplaTekSayilarToplam(this.baslangicDeger, this.bitisDeger);
+    } else {
+      this.toplam = undefined;
+    }
+  }
+
+  private hesaplaTekSayilarToplam(baslangic: number, bitis: number): number {
+    let toplam = 0;
+    for (let i = baslangic; i <= bitis; i++) {
+      if (i % 2 !== 0) {
+        toplam += i;
+      }
+    }
+    return toplam;
+  }
+
 }
