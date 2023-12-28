@@ -9,7 +9,7 @@
   <p>Dizi: {{ dizi | json }}</p>
   <p>En Küçük Eleman: {{ enKucuk }}</p>
   <button (click)="onButtonClick()">Yeniden Oluştur</button>
-  <img src="../assets/images/enkucuk (1).jpg" width="300px" height="300px" style="float: inline-end;">
+  <!-- <img src="../assets/images/enkucuk (1).jpg" width="300px" height="300px" style="float: inline-end;"> -->
 </div>
 <div>
   <h3 class="">2-- Asal çarpanları algoritması </h3>
@@ -17,7 +17,7 @@
   <button (click)="clickAsalSayi()">Asal Sayi Mı?</button>
   <p>{{ asalN }}</p>
 
-  <img src="../assets/images/asalsayi.jpg" width="300px" height="300px" style="float: inline-end;">
+  <!-- <img src="../assets/images/asalsayi.jpg" width="300px" height="300px" style="float: inline-end;"> -->
 </div>
 <div>
   <h3>3--Bubble Sort Algorithm</h3>
@@ -31,7 +31,7 @@
   </ul>
   <div> Algoritmayı çalıştırmak için butona tıkla </div>
   <button (click)="buttonClick()">Sort</button>
-  <img src="../assets/images/bubblesort.jpg" width="300px" height="300px" style="float: inline-end;">
+  <!-- <img src="../assets/images/bubblesort.jpg" width="300px" height="300px" style="float: inline-end;"> -->
 </div>
 
 <div>
@@ -45,6 +45,161 @@
     <ul>
       <li *ngFor="let kok of kokler">{{ kok }}</li>
     </ul>
+    <p>{{ reelkok }}</p>
+
+
   </div>
-  <img src="../assets/images/denklem.jpg" width="300px" height="300px" style="float: inline-end;">
+  <!-- <img src="../assets/images/denklem.jpg" width="300px" height="300px" style="float: inline-end;"> -->
+</div>
+<div>
+  <h3>5-- Doğum gününe kalan ayı hesaplama</h3>
+  <label for="birthday">Doğum Günü:</label>
+  <input type="date" id="birthday" [(ngModel)]="birthday">
+  <button (click)="calculateRemainingMonths()">Hesapla</button>
+
+  <ng-container *ngIf="remainingMonths !== undefined">
+    <p *ngIf="remainingMonths > 0">
+      {{ remainingMonths === 1 ? 'Bir ay' : remainingMonths + ' ay' }} kaldı
+    </p>
+
+    <p *ngIf="remainingMonths < 0">
+
+    </p>
+    <p *ngIf="remainingMonths < 0 && nextBirthdayMonths !== undefined">
+      {{ nextBirthdayMonths === 1 ? 'Bir ay' : nextBirthdayMonths + ' ay' }} kaldı
+    </p>
+  </ng-container>
+</div>
+<div>
+  <h3>6-- Girilen sayının faktöryelini hesaplama</h3>
+  <label for="numberInput">Enter a number:</label>
+  <input type="number" id="numberInput" [(ngModel)]="userInput" />
+  <button (click)="calculateFactorial()">Calculate Factorial</button>
+
+  <div *ngIf="factorialResult !== undefined">
+    <p>The factorial of {{ userInput }} is {{ factorialResult }}</p>
+  </div>
+
+  <div *ngIf="factorialResult === undefined && userInput !== undefined && userInput < 0">
+    <p>Please enter a non-negative number to calculate factorial.</p>
+  </div>
+</div>
+<div>
+  <h3>7-- vize ve final sınavın ortalamasını hesaplayıp ekrana sınıf geçme kalma durumunu ekrana yazan program . (vize =
+    %40,final=%60)</h3>
+  <label for="vizeInput">Vize Notu:</label>
+  <input type="number" id="vizeInput" [(ngModel)]="vize" />
+
+  <label for="finalInput">Final Notu:</label>
+  <input type="number" id="finalInput" [(ngModel)]="final" />
+
+  <button (click)="calculateAverage()">Ortalama Hesapla</button>
+
+  <div *ngIf="ortalama !== undefined">
+    <p>Ortalama: {{ ortalama }}</p>
+    <p>Durum: {{ durum }}</p>
+  </div>
+
+  <div *ngIf="(vize !== undefined && final !== undefined) && (vize < 0 || final < 0)">
+    <p>Lütfen geçerli notlar giriniz.</p>
+  </div>
+</div>
+<div>
+  <h3>8-- Dairenin cevresi ve alanı hesaplama</h3>
+  <label for="yaricapInput">Yarıçapı Girin:</label>
+  <input type="number" id="yaricapInput" [(ngModel)]="yaricap" />
+
+  <button (click)="calculateAreaAndPerimeter()">Alan ve Çevre Hesapla</button>
+
+  <div *ngIf="alan !== undefined">
+    <p>Dairenin Alanı: {{ alan | number: '1.2-2' }} </p>
+    <p>Dairenin Çevresi: {{ cevre | number: '1.2-2' }} </p>
+  </div>
+
+</div>
+<div>
+  <h3>9-- kdv oranına göre yeni fiyatı hesaplama</h3>
+  <label for="fiyatInput">Fiyatı Girin:</label>
+  <input type="number" id="fiyatInput" [(ngModel)]="fiyat" />
+
+  <label for="kdvOraniInput">KDV Oranını Girin:</label>
+  <input type="number" id="kdvOraniInput" [(ngModel)]="kdvOrani" />
+
+  <button (click)="calculateKdv()">KDV Hesapla</button>
+
+  <div *ngIf="kdv !== undefined && yeniFiyat !== undefined">
+    <p>KDV Tutarı: {{ kdv | number: '1.2-2' }} </p>
+    <p>Yeni Fiyat: {{ yeniFiyat | number: '1.2-2' }} </p>
+  </div>
+</div>
+<div>
+  <h3>10--- yapılan Zam miktarına göre yeni maaşları hesaplama. çalışma süresine göre extra zam</h3>
+
+  <label for="maasInput">Maaşı Girin:</label>
+  <input type="number" id="maasInput" [(ngModel)]="maas" />
+
+  <label for="zamOraniInput">Zam Oranını Girin:</label>
+  <input type="number" id="zamOraniInput" [(ngModel)]="zamOrani" />
+
+  <label for="calismaSuresiInput">Çalışma Süresini Girin:</label>
+  <input type="number" id="calismaSuresiInput" [(ngModel)]="calismaSuresi" />
+
+  <button (click)="calculateSalary()">Maaş Hesapla</button>
+
+  <div *ngIf="zam !== undefined && yeniMaas !== undefined">
+    <p>Zam Miktarı: {{ zam | number: '1.2-2' }} birim</p>
+    <p>Yeni Maaş: {{ yeniMaas | number: '1.2-2' }} birim</p>
+  </div>
+
+  <div
+    *ngIf="(maas !== undefined && zamOrani !== undefined && calismaSuresi !== undefined) && (maas <= 0 || zamOrani < 0)">
+    <p>Lütfen geçerli maaş, zam oranı ve çalışma süresi girin.</p>
+  </div>
+</div>
+<div>
+  <h3>11-- kdv oranına göre yeni fiyatı hesaplama</h3>
+  <label for="heightInput">Ağaç Yüksekliğini Girin:</label>
+  <input type="number" id="heightInput" [(ngModel)]="height" />
+
+  <button (click)="drawTree()">Ağacı Çiz</button>
+
+  <div *ngFor="let row of tree">
+    <p>{{ row }}</p>
+  </div>
+</div>
+<div>
+  <h3>12-- Eğitim durumuna göre burs miktari hesaplama</h3>
+  <label for="egitimDurumuInput">Eğitim Durumu Sayısını Girin (1: Lise,
+    2: Lisans,
+    3: Yüksek Lisans):</label>
+  <input type="number" id="egitimDurumuInput" [(ngModel)]="egitimDurumu" />
+
+  <button (click)="scholarship()">Bursu Hesapla</button>
+
+  <div *ngIf="sonuc !== undefined">{{ sonuc }}</div>
+</div>
+<h3>13---Girilen sayi mükemmel sayi olup olmadığını ekrana yazan algoritma</h3>
+<div>
+  <label for="sayiInput">Bir sayı girin:</label>
+  <input type="number" id="sayiInput" [(ngModel)]="girilenSayi" />
+  <button (click)="perfectNum()">sayi tibini Kontrol Et</button>
+
+  <div *ngIf="sayininTipi !== undefined">{{ sayininTipi }}</div>
+</div>
+<div>
+  <h3>14--- Girilen Texti Ters Çeviren algoritma</h3>
+  <label for="metinInput">Bir metin girin:</label>
+  <input type="text" id="metinInput" [(ngModel)]="girilenMetin" />
+  <button (click)="reverseText()">Metni Ters Çevir</button>
+
+  <div *ngIf="textsonuc !== undefined">Stringin ters yazılmış hali : {{ textsonuc }}</div>
+</div>
+<div>
+  <h3>15--- karekök hesaplama</h3>
+  <label for="sayiInput">Bir sayı girin:</label>
+  <input type="number" id="sayiInput" [(ngModel)]="num" />
+
+  <button (click)="karekokHesapla()">Karekök Hesapla</button>
+
+  <div *ngIf="karakoksonuc !== undefined">{{ karakoksonuc }}</div>
 </div>
